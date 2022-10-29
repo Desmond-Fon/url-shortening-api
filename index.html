@@ -21,23 +21,26 @@
   <nav class="pt-10 px-6 pb-8">
     <div class="flex justify-between items-center">
       <img src="images/logo.svg" alt="">
-      <img src="images/icon-hamburger.svg" alt="" class="h-4 w-5">
-    <ul class="hidden">
+      <img src="images/icon-hamburger.svg" alt="" class="h-4 w-5" id="hamburg">
+    <ul class="hidden ">
       <li>Features</li>
       <li>Pricing</li>
       <li>Resources</li>
     </ul>
     </div>
   
-   <div class="hidden">
-    <ul>
-      <li>Features</li>
-      <li>Pricing</li>
-      <li>Resources</li>
+   <div class="hidden bg-darkVIolet p-7 rounded-md shadow-lg" id="menu">
+    <ul class="flex justify-center items-center flex-col gap-5">
+      <li class="font-bold text-white">Features</li>
+      <li class="font-bold text-white">Pricing</li>
+      <li class="font-bold text-white pb-5">Resources</li>
     </ul>
-    <div>
-      Login
-    Sign Up
+
+    <hr class="text-gray-100">
+
+    <div class="flex justify-center flex-col items-center pt-5">
+      <button class="py-2 px-6 font-bold text-white mt-5">Login</button>
+      <button class="rounded-full bg-cyan py-2 px-6 font-bold w-full text-white">Sign Up</button>
     </div>
    </div>
   </nav>
@@ -56,14 +59,50 @@
 </header>
   
 <main class="bg-gray-100 ">
-  <div class="flex flex-col justify-center items-center pb-12">
+  <div class="flex flex-col justify-center items-center pb-6">
     <div class="bg-[url('/images/bg-shorten-mobile.svg')] bg-darkVIolet bg-no-repeat bg-center bg-cover w-4/5 h-40 rounded-lg flex flex-col justify-center items-center">
       <form method="post" class="flex flex-col justify-center">
-        <input type="text" name="link" id="linkInput" placeholder="  Shorten a link here..." class="h-11 rounded-md w-full mb-2">
-        <input type="button" value="Shorten It!" class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white">
+        <input type="text" name="link" id="linkInput" placeholder="  Shorten a link here..." class="h-11 rounded-md w-full mb-2 p-4" required>
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white">Shorten It!</button>
       </form>
      </div>
   </div>
+
+
+  <div class="flex flex-col justify-center items-center pb-12">
+    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
+      <p class="text-left px-5 text-ellipsis overflow-hidden ">https://www.frontendmentor.iodsdfsdffrefffg</p>
+      <hr class="text-gray-500">
+      <p class="text-cyan text-left px-5">https://reLink/k4lKyk</p>
+      <div class="px-5">
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center items-center pb-12">
+    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
+      <p class="text-left px-5 text-ellipsis overflow-hidden ">https://www.frontendmentor.iodsdfsdffrefffg</p>
+      <hr class="text-gray-500">
+      <p class="text-cyan text-left px-5">https://reLink/k4lKyk</p>
+      <div class="px-5">
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white" id="copy">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center items-center pb-12">
+    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
+      <p class="text-left px-5 text-ellipsis overflow-hidden ">https://www.frontendmentor.iodsdfsdffrefffgdcvdsfsddvcfvdfvxcvdfvdss</p>
+      <hr class="text-gray-500">
+      <p class="text-cyan text-left px-5">https://reLink/k4lKyk</p>
+      <div class="px-5">
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  
   
     <div class="pt-10 pb-20">
       <h2 class="text-center text-3xl text-veryDarkBlue font-extrabold ">Advanced Statistics</h2>
