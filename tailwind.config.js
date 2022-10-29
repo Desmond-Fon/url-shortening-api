@@ -3,7 +3,7 @@ module.exports = {
   content: ['./index.html'],
   theme: {
     extend: {
-      color: {
+      colors: {
         'cyan': 'hsl(180, 66%, 49%)',
         'darkVIolet': 'hsl(257, 27%, 26%)',
         'red': 'hsl(0, 87%, 67%)',
