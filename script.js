@@ -1,7 +1,50 @@
 const hamburger = document.getElementById("hamburg");
 const menu = document.getElementById("menu");
-const copy = document.getElementsByClassName('copy');
-const shortUrl = document.getElementById('shortUrl')
+const copy = document.querySelectorAll('.copy');
+const shortUrl = document.querySelectorAll('.shortUrl');
+const linkInput = document.getElementById('linkInput');
+const btn = document.getElementById('btn');
+const outputUrl = document.getElementById('output-Url');
+const inputField = document.getElementsByTagName('input')
+
+
+
+btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log(inputField[0].value)
+  fetch(`https://api.shrtco.de/v2/shorten?url=${linkInput.value}`)
+  .then(res => {
+    // console.log(res);
+    return res.json()})
+   .then(data => {
+    // console.log(data.result.short_link)
+    let reply = JSON.stringify(data.result.short_link)
+    console.log(reply);
+    const userReply = document.getElementById('user-reply');
+    let output = `<div class="flex flex-col justify-center items-center pb-12">
+    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
+      <p class="text-left px-5 text-ellipsis overflow-hidden ">${linkInput.value}</p>
+      <hr class="text-gray-500">
+      <p class="text-cyan text-left px-5 shortUrl" id="output-Url">${reply}</p>
+      <div class="px-5">
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white copy">Copy</button>
+      </div>
+    </div>
+  </div>`;
+  userReply.innerHTML += output;
+   })
+
+   inputField[0].value = '';
+});
+
+
+// function generateUrl () {
+//   console.log(linkInput.value)
+
+//   // fetch(`https://api.shrtco.de/v2/shorten?url=example.org/very/long/link.html`)
+// }
+
+
 
 hamburger.addEventListener("click", () => {
   if (menu.classList.contains("hidden")) {
@@ -17,24 +60,33 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-const copied = () => {
-    console.log('click');
-    // if(copy.classList.contains('bg-cyan')){
-      // copy.classList.remove('bg-cyan');
-      // copy.classList.add('bg-veryDarkBlue');
-      copy.textContent = "Copied";
-      console.log(copy.classList);
-      document.body.style.backgroundColor = 'veryDarkBlue';
-    // } 
-    // else{
-      // copy.classList.add('bg-cyan');
-      // copy.classList.remove('bg-veryDarkBlue');
-      // }
-      var text = shortUrl.textContent;
-      navigator.clipboard.writeText(text).then(function() {
-        console.log('Async: Copying to clipboard was successful!');
-      }, function(err) {
-        console.error('Async: Could not copy text: ', err);
-      });
-};
 
+
+const copiedItems = () => {
+
+    // let answer = navigator.clipboard.writeText(shortUrl.textContent).then(function() {
+    //   console.log('Async: Copying to clipboard was successful!');
+    //   console.log(shortUrl.textContent); 
+    // }, function(err) {
+    //   console.error('Async: Could not copy text: ', err);
+
+    // });
+    console.log(shortUrl);
+    
+    console.log(shortUrl.textContent);
+    
+  }
+  
+  copy.forEach(copies => {
+    copies.addEventListener('click', function handleClick() {
+      console.log('clicked');
+      copies.textContent = "Copied!";
+      copies.setAttribute('style', 'background-color: hsl(257, 27%, 26%);');
+      
+      for (var i = 0; i < shortUrl.length; i++) {
+        console.log('shortUrl: ', shortUrl[i].textContent);
+      }
+      // copiedItems();
+
+  });
+});
