@@ -34,7 +34,7 @@ btn.addEventListener('click', (e) => {
   userReply.innerHTML += output;
    })
 
-   inputField[0].value = '';
+  //  inputField[0].value = '';
 });
 
 
