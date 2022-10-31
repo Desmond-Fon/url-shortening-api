@@ -18,16 +18,23 @@
 <body>
 
 <header class="">
-  <nav class="pt-10 px-6 pb-8">
-    <div class="flex justify-between items-center">
-      <img src="images/logo.svg" alt="">
-      <img src="images/icon-hamburger.svg" alt="" class="h-4 w-5" id="hamburg">
-    <ul class="hidden ">
-      <li>Features</li>
-      <li>Pricing</li>
-      <li>Resources</li>
-    </ul>
-    </div>
+  <nav class="pt-10 px-6 pb-8 lg:px-40">
+ <div class="lg:flex justify-between items-center">
+  <div class="flex justify-between items-center">
+    <img src="images/logo.svg" alt="">
+    <img src="images/icon-hamburger.svg" alt="" class="h-4 lg:hidden w-5" id="hamburg">
+  <ul class="hidden lg:flex justify-center items-center pl-10 gap-6">
+    <li class="lg:hover:font-bold px-4"><a href="/">Features</a></li>
+    <li class="lg:hover:font-bold px-4"><a href="/">Pricing</a></li>
+    <li class="lg:hover:font-bold px-4"><a href="/">Resources</a></li>
+  </ul>
+</div>
+<div class="lg:flex justify-center items-center pt-5 hidden">
+  <button class="py-2 px-6 hover:font-bold text-black mt-5 lg:m-0 lg:px-10">Login</button>
+  <button class="rounded-full bg-cyan py-2 px-6 font-bold w-full text-white lg:hover:bg-opacity-75">Sign Up</button>
+</div>
+ </div>
+
   
    <div class="hidden bg-darkVIolet p-7 rounded-md shadow-lg" id="menu">
     <ul class="flex justify-center items-center flex-col gap-5">
@@ -45,44 +52,50 @@
    </div>
   </nav>
 
-<div class="">
-  <img src="images/illustration-working.svg" alt="" class=" pl-6 h-64 object-cover">
-</div>
-
-  <h1 class="text-5xl font-black text-center text-veryDarkBlue pt-8 pb-4 ">More than just shorter links</h1>
-
-  <p class="text-center text-lg text-grayishViolet px-6 tracking-wide ">Build your brand’s recognition and get detailed insights on how your links are performing.</p>
-
-  <div class="flex justify-center items-center pt-8 pb-16">
-    <button class="rounded-full bg-cyan py-3 px-10 text-lg font-bold text-white">Get Started</button>
+<div class="lg:flex lg:flex-row-reverse justify-between lg:lg:pl-40 lg:my-20">
+  <div class="flex justify-center">
+    <img src="images/illustration-working.svg" alt="" class=" pl-6 h-64 object-cover lg:object-contain lg:h-full ">
   </div>
+  
+    <div class="">
+      <h1 class="text-5xl font-black text-center text-veryDarkBlue pt-8 pb-4 lg:text-left lg:text-7xl">More than just shorter links</h1>
+  
+    <p class="text-center text-lg text-grayishViolet px-6 tracking-wide lg:text-left  lg:p-0 ">Build your brand’s recognition and get detailed insights on how your links are performing.</p>
+  
+    <div class="flex justify-center items-center pt-8 pb-16 lg:justify-start">
+      <button class="rounded-full bg-cyan py-3 px-10 text-lg font-bold text-white lg:hover:bg-opacity-75">Get Started</button>
+    </div>
+    </div>
+</div>
 </header>
   
 <main class="bg-gray-100 ">
-  <div class="flex flex-col justify-center items-center pb-6">
-    <div class="bg-[url('/images/bg-shorten-mobile.svg')] bg-darkVIolet bg-no-repeat bg-center bg-cover w-4/5 h-40 rounded-lg flex flex-col justify-center items-center">
-      <form method="post" class="flex flex-col justify-center">
-        <input type="text" name="link" id="linkInput" placeholder="Shorten a link here..." class="h-11 rounded-md w-full mb-2 p-4" required>
-        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white" id="btn">Shorten It!</button>
+  <div class="flex flex-col justify-center items-center pb-6 ">
+    <div class="bg-[url('/images/bg-shorten-mobile.svg')] lg:bg-[url('/images/bg-shorten-desktop.svg')] bg-darkVIolet bg-no-repeat bg-center bg-cover w-4/5 h-40 rounded-lg flex flex-col justify-center ">
+      <form method="post" class="flex flex-col lg:flex-row justify-center lg:items-center px-5">
+        <input type="text" name="link" id="linkInput" placeholder="Shorten a link here..." class="h-11 rounded-md w-full mb-2 p-4 lg:w-3/4 lg:mb-0 lg:mr-3" required>
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold lg:mt-0 text-white lg:hover:bg-opacity-75 lg:w-1/5 lg:ml-3" id="btn">Shorten It!</button>
       </form>
      </div>
   </div>
-
+  
   <div id="user-reply"></div>
-
-
+  
+  
+  
   <!-- <div class="flex flex-col justify-center items-center pb-12">
-    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
+    <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis lg:flex-row lg:items-center lg:justify-between lg:h-20">
       <p class="text-left px-5 text-ellipsis overflow-hidden ">https://www.frontendmentor.iodsdfsdffrefffg</p>
-      <hr class="text-gray-500">
+      <hr class="text-gray-500 lg:hidden">
+     <div class="lg:flex lg:items-center">
       <p class="text-cyan text-left px-5 shortUrl" id="output-Url">https://reLink/k4lKyk</p>
       <div class="px-5">
-        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white copy" id="copy">Copy</button>
+        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white lg:w-40 lg:mt-0 copy" id="copy">Copy</button>
+     </div>
       </div>
     </div>
-  </div>
-
-  <div class="flex flex-col justify-center items-center pb-12">
+  </div> -->
+  <!-- <div class="flex flex-col justify-center items-center pb-12">
     <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis">
       <p class="text-left px-5 text-ellipsis overflow-hidden ">https://www.frontendmentor.iodsdfsdffrefffg</p>
       <hr class="text-gray-500">
@@ -128,89 +141,90 @@
 
   
   
-    <div class="pt-10 pb-20">
+    <div class="pt-10 pb-20 lg:flex lg:items-center lg:justify-center lg:flex-col lg:mt-20">
       <h2 class="text-center text-3xl text-veryDarkBlue font-extrabold ">Advanced Statistics</h2>
 
-    <p class="text-center text-grayishViolet px-8 pt-7  tracking-wide">Track how your links are performing across the web with our 
+    <p class="text-center text-grayishViolet px-8 pt-7  tracking-wide lg:w-[35%]">Track how your links are performing across the web with our 
       advanced statistics dashboard.</p>
     </div>
     
   
-<div class="flex justify-center flex-col items-center relative">
-  <div class=" border-l-[7px] border-cyan h-full absolute left-1/2 top-0"></div>
-  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm mb-24 z-10">
-    <div class="rounded-full bg-darkVIolet p-5 -mt-14">
+<div class="flex justify-center flex-col items-center relative lg:flex-row lg:gap-8 lg:mx-40 lg:pb-20 ">
+  <div class="lg:hidden border-r-[7px] border-cyan h-full absolute left-1/2 top-0"></div>
+  <div class="hidden lg:flex border-t-[7px] border-cyan w-full absolute top-1/2 left-0"></div>
+  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm lg:rounded-md mb-24 lg:mb-0 z-10 lg:h-[280px] lg:justify-start lg:items-start lg:px-8">
+    <div class="rounded-full bg-darkVIolet p-5 -mt-[40px]">
       <img src="images/icon-brand-recognition.svg" alt="">
     </div>
-    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10">Brand Recognition</h3>
-    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm">Boost your brand recognition with each click. Generic links don’t 
+    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10 lg:text-left">Brand Recognition</h3>
+    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm lg:text-left lg:px-0">Boost your brand recognition with each click. Generic links don’t 
     mean a thing. Branded links help instil confidence in your content.</p>
   </div>
 
-  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm mb-24 z-10">
-    <div class="rounded-full bg-darkVIolet p-5 -mt-14">
+  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm lg:rounded-md mb-24 lg:mb-0 z-10 lg:h-[280px] lg:justify-start lg:items-start lg:px-8 lg:mt-20">
+    <div class="rounded-full bg-darkVIolet p-5 -mt-[40px]">
       <img src="images/icon-detailed-records.svg" alt="">
     </div>
-    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10">Detailed Records</h3>
-    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm">Gain insights into who is clicking your links. Knowing when and where 
+    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10 lg:text-left">Detailed Records</h3>
+    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm lg:text-left lg:px-0">Gain insights into who is clicking your links. Knowing when and where 
       people engage with your content helps inform better decisions.</p>
   </div>
 
-  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm z-10">
-    <div class="rounded-full bg-darkVIolet p-5 -mt-14">
+  <div class="flex justify-center flex-col items-center bg-white w-4/5 rounded-sm lg:rounded-md mb-0 lg:mb-0 z-10 lg:h-[280px] lg:justify-start lg:items-start lg:px-8 lg:mt-40">
+    <div class="rounded-full bg-darkVIolet p-5 -mt-[40px]">
       <img src="images/icon-brand-recognition.svg" alt="">
     </div>
-    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10">Fully Customizable</h3>
-    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm">Improve brand awareness and content discoverability through customizable 
+    <h3 class="text-center text-2xl text-veryDarkBlue font-extrabold pt-10 lg:text-left">Fully Customizable</h3>
+    <p class="text-center text-grayishViolet px-7 pt-6 pb-10 text-sm lg:text-left lg:px-0">Improve brand awareness and content discoverability through customizable 
       links, supercharging audience engagement.</p>
   </div>
 
 </div>
-<aside class="bg-[url('/images/bg-boost-mobile.svg')] bg-darkVIolet bg-no-repeat bg-center bg-cover h-72 flex justify-center items-center flex-col">
-  <p class="pb-6 text-white text-3xl font-extrabold">Boost your links today</p>
+<aside class="bg-[url('/images/bg-boost-mobile.svg')] lg:bg-[url('/images/bg-boost-desktop.svg')] bg-darkVIolet bg-no-repeat bg-center bg-cover h-72 flex justify-center items-center flex-col mt-16">
+  <p class="pb-6 text-white text-3xl font-extrabold lg:tracking-wider lg:text-4xl">Boost your links today</p>
   <div class="flex justify-center items-center">
-    <button class="rounded-full bg-cyan py-3 px-11 text-xl  font-bold text-white">Get Started</button>
+    <button class="rounded-full bg-cyan py-3 px-11 text-xl  font-bold text-white lg:hover:bg-opacity-75">Get Started</button>
   </div>
 </aside>
 </main>
 
 
-<footer class="flex justify-center items-center flex-col bg-veryDarkViolet">
+<footer class="flex justify-center items-center flex-col bg-veryDarkViolet lg:flex-row lg:justify-between lg:px-40 lg:py-20 lg:items-start">
 
-<img src="images/white-logo.svg" alt="" class="my-12 "> 
+<img src="images/white-logo.svg" alt="" class="my-12 lg:my-0"> 
 
-  <div class="flex justify-center items-center flex-col text-center mb-10">
+  <div class="flex justify-center items-center flex-col text-center mb-10 lg:text-left lg:items-start">
     <h2 class="font-bold text-white mb-6">Features</h2>
 
-    <p class="text-grayy mb-2">Link Shortening</p>
-    <p class="text-grayy mb-2">Branded Links</p>
-    <p class="text-grayy mb-2">Analytics</p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Link Shortening</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Branded Links</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Analytics</a></p>
     
   </div>
 
-  <div class="flex justify-center items-center flex-col text-center mb-10">
+  <div class="flex justify-center items-center flex-col text-center mb-10 lg:items-start">
     <h2 class="font-bold text-white mb-6">Resources</h2>
 
-    <p class="text-grayy mb-2">Blog</p>
-    <p class="text-grayy mb-2">Developers</p>
-    <p class="text-grayy mb-2">Support</p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Blog</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Developers</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Support</a></p>
     
   </div>
 
-  <div class="flex justify-center items-center flex-col text-center">
+  <div class="flex justify-center items-center flex-col text-center lg:items-start">
     <h2 class="font-bold text-white mb-6">Company</h2>
 
-    <p class="text-grayy mb-2">About</p>
-    <p class="text-grayy mb-2">Our Team</p>
-    <p class="text-grayy mb-2">Careers</p>
-    <p class="text-grayy mb-2">Contact</p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">About</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Our Team</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Careers</a></p>
+    <p class="text-grayy mb-2 lg:hover:text-cyan"><a href="/">Contact</a></p>
   </div>
 
-  <div class="flex gap-6 py-12">
-    <img src="images/icon-facebook.svg" alt="">
-    <img src="images/icon-twitter.svg" alt="">
-    <img src="images/icon-pinterest.svg" alt="">
-    <img src="images/icon-instagram.svg" alt="">
+  <div class="flex gap-6 py-12 lg:py-0 ">
+    <img src="images/icon-facebook.svg" alt="" class=" lg:hover:bg-cyan  ">
+    <img src="images/icon-twitter.svg" alt="" class=" lg:hover:bg-cyan  ">
+    <img src="images/icon-pinterest.svg" alt="" class=" lg:hover:bg-cyan  ">
+    <img src="images/icon-instagram.svg" alt="" class=" lg:hover:bg-cyan  ">
   </div>
   
 </footer>
