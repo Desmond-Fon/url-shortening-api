@@ -7,6 +7,8 @@ const btn = document.getElementById('btn');
 const outputUrl = document.getElementById('output-Url');
 const inputField = document.getElementsByTagName('input');
 const copyBtn = document.getElementById('copy-button');
+const userReply = document.getElementById('user-reply');
+
 
 
 
@@ -15,7 +17,7 @@ copy.forEach(copies => {
     console.log('clicked');
   copies.textContent = "Copied!";
   copies.setAttribute('style', 'background-color: hsl(257, 27%, 26%);');
-  
+  navigator.clipboard.writeText(shortUrl.textContent)
   for (var i = 0; i < shortUrl.length; i++) {
     console.log('shortUrl: ', shortUrl[i].textContent);
   }
@@ -23,17 +25,18 @@ copy.forEach(copies => {
 });
 
 
-function handleClick() {
-  console.log('clicked');
-  copy.textContent = "Copied!";
-  copy.setAttribute('style', 'background-color: hsl(257, 27%, 26%);');
-  
-  for (var i = 0; i < shortUrl.length; i++) {
-    console.log('shortUrl: ', shortUrl[i].textContent);
-  }
-  // copiedItems();
 
-}
+// function handleClick() {
+  //   console.log('clicked');
+//   copy.textContent = "Copied!";
+//   copy.setAttribute('style', 'background-color: hsl(257, 27%, 26%);');
+//   navigator.clipboard.writeText(shortUrl.textContent)
+//   for (var i = 0; i < shortUrl.length; i++) {
+  //     console.log('shortUrl: ', shortUrl[i].textContent);
+  //   }
+//   // copiedItems();
+
+// }
 
 
 btn.addEventListener('click', (e) => {
@@ -41,48 +44,69 @@ btn.addEventListener('click', (e) => {
   console.log(inputField[0].value)
   fetch(`https://api.shrtco.de/v2/shorten?url=${linkInput.value}`)
   .then(res => {
+    if (!res.ok) throw new Error ('invalid url');
     // console.log(res);
     return res.json()})
    .then(data => {
     // console.log(data.result.short_link)
     let reply = JSON.stringify(data.result.short_link)
     console.log(reply);
-    const userReply = document.getElementById('user-reply');
+    // const userReply = document.getElementById('user-reply');
     let output = ` <div class="flex flex-col justify-center items-center pb-12">
     <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis lg:flex-row lg:items-center lg:justify-between lg:h-20">
-      <p class="text-left px-5 text-ellipsis overflow-hidden ">${linkInput.value}</p>
-      <hr class="text-gray-500 lg:hidden">
-     <div class="lg:flex lg:items-center">
-      <p class="text-cyan text-left px-5 shortUrl" id="output-Url">${reply}</p>
-      <div class="px-5">
-        <button  class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white lg:w-40 lg:mt-0 copy" id="copy">Copy</button>
-     </div>
-      </div>
+    <p class="text-left px-5 text-ellipsis overflow-hidden ">${linkInput.value}</p>
+    <hr class="text-gray-500 lg:hidden">
+    <div class="lg:flex lg:items-center">
+    <p class="text-cyan text-left px-5 shortUrl" id="output-Url">${reply}</p>
+    <div class="px-5">
+    <button class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white lg:w-40 lg:mt-0" class='copy' id='copied'>Copy</button>
+    </div>
+    </div>
     </div>
   </div>`;
+  // output.classList.add('copy');
+  // but.setAttribute("class", "copy");
+  linkInput.value = '';
   userReply.innerHTML += output;
   console.log(userReply);
-  handleClick();
+  // handleClick();
 })
-   
+.catch(err => {
+  
+  // const userReply = document.getElementById('user-reply');
+  userReply.innerHTML += ` <div class="flex flex-col justify-center items-center pb-12">
+  <div class="bg-white w-4/5 h-40 rounded-lg flex flex-col justify-evenly overflow-hidden text-ellipsis lg:flex-row lg:items-center lg:justify-between lg:h-20">
+  <p class="text-left px-5 text-ellipsis overflow-hidden ">${linkInput.value}</p>
+  <hr class="text-gray-500 lg:hidden">
+  <div class="lg:flex lg:items-center">
+  <p class="text-cyan text-left px-5 shortUrl" id="output-Url">${err}</p>
+    </div>
+    </div>
+    </div>`
+    linkInput.value = ''; 
+  })
+
+  
   //  inputField[0].value = '';
 });
 
-  //  copyBtn.addEventListener('click', () => {
+//  copyBtn.addEventListener('click', () => {
   //   console.log('clickedd');
   //  })
-
-
-// function generateUrl () {
-//   console.log(linkInput.value)
-
-//   // fetch(`https://api.shrtco.de/v2/shorten?url=example.org/very/long/link.html`)
-// }
-
-
-
-hamburger.addEventListener("click", () => {
-  if (menu.classList.contains("hidden")) {
+  
+  localStorage.setItem('list', userReply);
+  console.log(localStorage.getItem('list'));
+  
+  // function generateUrl () {
+    //   console.log(linkInput.value)
+    
+    //   // fetch(`https://api.shrtco.de/v2/shorten?url=example.org/very/long/link.html`)
+    // }
+    
+    
+    
+    hamburger.addEventListener("click", () => {
+      if (menu.classList.contains("hidden")) {
     menu.classList.remove("hidden");
   } else {
     menu.classList.add("hidden");
@@ -98,8 +122,8 @@ hamburger.addEventListener("click", () => {
 
 
 const copiedItems = () => {
-
-    // let answer = navigator.clipboard.writeText(shortUrl.textContent).then(function() {
+  
+  // let answer = navigator.clipboard.writeText(shortUrl.textContent).then(function() {
     //   console.log('Async: Copying to clipboard was successful!');
     //   console.log(shortUrl.textContent); 
     // }, function(err) {
@@ -112,3 +136,11 @@ const copiedItems = () => {
     
   }
   
+
+  
+  document.getElementsByTagName('button').item(2).addEventListener('click', () => {
+    document.getElementsByTagName('button').item(2).textContent = "Copied!";
+    document.getElementsByTagName('button').item(2).setAttribute('style', 'background-color: hsl(257, 27%, 26%);');
+    navigator.clipboard.writeText(shortUrl.textContent)
+  })
+  console.log(document.getElementsByTagName('button').item(6));
