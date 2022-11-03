@@ -17,6 +17,11 @@ function print() {
     document.querySelectorAll(".shortUrl").forEach((short) => {
       navigator.clipboard.writeText(short.textContent);
     });
+
+    localStorage.setItem("key", JSON.stringify(`${userReply.innerHTML}`));
+
+    console.log(localStorage.getItem("key"));
+
   });
 }
 
@@ -66,11 +71,9 @@ btn.addEventListener("click", (e) => {
       linkInput.value = "";
     });
 
-  localStorage.setItem("key", JSON.stringify(userReply));
+    
 
-  localStorage.getItem("key")
-    ? JSON.parse(localStorage.getItem(userReply))
-    : "";
+ 
 });
 
 hamburger.addEventListener("click", () => {
@@ -86,3 +89,5 @@ hamburger.addEventListener("click", () => {
     hamburger.src = "images/icon-hamburger.svg";
   }
 });
+
+
