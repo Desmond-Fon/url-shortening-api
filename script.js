@@ -10,7 +10,10 @@ const copyBtn = document.getElementById("copy-button");
 const userReply = document.getElementById("user-reply");
 
 function print() {
-  document.querySelectorAll(".copy").forEach((copyy) => {
+  Array.from(document.getElementsByClassName("copy")).forEach(copyy => {
+    copyy.addEventListener('click', (e) => {
+      const targetElement = e.target;
+      if (targetElement.matches(".copy")){
     copyy.setAttribute("style", "background-color: hsl(257, 27%, 26%);");
     copyy.textContent = "Copied!";
 
@@ -22,7 +25,8 @@ function print() {
 
     console.log(localStorage.getItem("key"));
 
-  });
+  }})
+})
 }
 
 btn.addEventListener("click", (e) => {
@@ -49,14 +53,14 @@ btn.addEventListener("click", (e) => {
       -1
     )}</p>
     <div class="px-5">
-    <button class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white lg:w-40 lg:mt-0 copy" id='copied' onclick="print()">Copy</button>
+    <button class="h-11 rounded-md w-full bg-cyan mt-2 font-bold text-white lg:w-40 lg:mt-0 copy" onclick="print()">Copy</button>
     </div>
     </div>
     </div>
   </div>`;
 
       linkInput.value = "";
-      userReply.innerHTML += output;
+      userReply.insertAdjacentHTML('afterbegin', output)
     })
     .catch((err) => {
       userReply.innerHTML += ` <div class="flex flex-col justify-center items-center pb-12">
