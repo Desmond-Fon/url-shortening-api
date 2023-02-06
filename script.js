@@ -32,7 +32,8 @@ function print() {
 btn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  fetch(`https://api.shrtco.de/v2/shorten?url=${linkInput.value}`)
+  if(linkInput.value) {
+    fetch(`https://api.shrtco.de/v2/shorten?url=${linkInput.value}`)
     .then((res) => {
       if (!res.ok) throw new Error("invalid url");
 
@@ -75,6 +76,7 @@ btn.addEventListener("click", (e) => {
       linkInput.value = "";
     });
 
+  }else null
     
 
  
